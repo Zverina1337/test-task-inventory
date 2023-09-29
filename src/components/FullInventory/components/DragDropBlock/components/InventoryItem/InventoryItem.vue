@@ -14,14 +14,9 @@
 </template>
 
 <script setup lang="ts">
+import {InventoryItemType} from "../../../../../../types/types.ts";
 
-interface InventoryItemProps {
-  id: number;
-  value: number;
-  imageUrl: string;
-}
-
-const props = withDefaults(defineProps<InventoryItemProps>(),{
+const props = withDefaults(defineProps<InventoryItemType>(),{
   value: 0,
   imageUrl: "",
 })

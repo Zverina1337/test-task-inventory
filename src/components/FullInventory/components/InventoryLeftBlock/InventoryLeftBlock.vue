@@ -40,7 +40,6 @@
 </template>
 
 <script setup lang="ts">
-
 import SkeletonComponent from "../../../../shared/ui/SkeletonComponent/SkeletonComponent.vue";
 </script>
 

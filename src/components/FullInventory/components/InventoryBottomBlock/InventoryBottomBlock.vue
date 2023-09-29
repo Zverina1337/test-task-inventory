@@ -8,7 +8,6 @@
 </template>
 
 <script setup lang="ts">
-
 import SkeletonComponent from "../../../../shared/ui/SkeletonComponent/SkeletonComponent.vue";
 import CloseIcon from "../../../../shared/icons/CloseIcon.vue";
 </script>

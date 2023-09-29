@@ -8,11 +8,9 @@
 </template>
 
 <script setup lang="ts">
-interface SkeletonProps {
-  height: "small" | "medium" | "large" | "responsive";
-  width?: number;
-}
-const props = withDefaults(defineProps<SkeletonProps>(),{
+import {SkeletonType} from "../../../types/types.ts";
+
+const props = withDefaults(defineProps<SkeletonType>(),{
   height: "small",
 })
 

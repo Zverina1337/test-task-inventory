@@ -26,19 +26,11 @@
 import InventoryItem from "./components/InventoryItem/InventoryItem.vue";
 import { VueDraggableNext as draggable } from 'vue-draggable-next';
 import {reactive} from "vue";
-import PanelComponent from "../../../../shared/ui/PanelComponent/PanelComponent.vue";
+import PanelComponent from "../../../../shared/ui/modals/InfoModal/InfoModal.vue";
+import {BooleanType, RowType} from "../../../../types/types.ts";
 
-interface RowType {
-  id: number;
-  value: number;
-  imageUrl: string;
-}
-
-interface PanelType {
-  value: boolean;
-}
 let row: RowType = { id: 0, value: 0, imageUrl: ""};
-let isShowPanel: PanelType = reactive({value: false})
+let isShowPanel: BooleanType = reactive({value: false})
 function showPanel(currentRow: RowType): void {
   row = currentRow;
   isShowPanel.value = !isShowPanel.value;

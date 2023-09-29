@@ -9,7 +9,6 @@
 </template>
 
 <script setup lang="ts">
-
 import InventoryLeftBlock from "./components/InventoryLeftBlock/InventoryLeftBlock.vue";
 import InventoryBottomBlock from "./components/InventoryBottomBlock/InventoryBottomBlock.vue";
 import DragDropBlock from "./components/DragDropBlock/DragDropBlock.vue";
