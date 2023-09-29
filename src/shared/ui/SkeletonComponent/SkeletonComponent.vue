@@ -2,6 +2,7 @@
   <div
       class="skeleton"
       :class="`skeleton__height-${props.height}`"
+      :style="`width: ${props.width}px`"
   >
   </div>
 </template>
@@ -9,6 +10,7 @@
 <script setup lang="ts">
 interface SkeletonProps {
   height: "small" | "medium" | "large" | "responsive";
+  width?: number;
 }
 const props = withDefaults(defineProps<SkeletonProps>(),{
   height: "small",

@@ -22,13 +22,12 @@ import DragDropBlock from "./components/DragDropBlock/DragDropBlock.vue";
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  padding: 32px;
 
   &__inner-block {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 100%;
-    gap: var(--margin-24);
   }
 }
 </style>

@@ -7,11 +7,31 @@
       <div class="inventory-left-block__skeleton-large-margin">
         <skeleton-component height="large"/>
       </div>
-      <skeleton-component height="small" class="inventory-left-block__skeleton-element"/>
-      <skeleton-component height="small" class="inventory-left-block__skeleton-element"/>
-      <skeleton-component height="small" class="inventory-left-block__skeleton-element"/>
-      <skeleton-component height="small" class="inventory-left-block__skeleton-element"/>
-      <skeleton-component height="small" class="inventory-left-block__skeleton-element"/>
+      <skeleton-component
+          height="small"
+          :width="150"
+          class="inventory-left-block__skeleton-element"
+      />
+      <skeleton-component
+          height="small"
+          :width="170"
+          class="inventory-left-block__skeleton-element"
+      />
+      <skeleton-component
+          height="small"
+          :width="150"
+          class="inventory-left-block__skeleton-element"
+      />
+      <skeleton-component
+          height="small"
+          :width="130"
+          class="inventory-left-block__skeleton-element"
+      />
+      <skeleton-component
+          height="small"
+          :width="100"
+          class="inventory-left-block__skeleton-element"
+      />
       <div class="inventory-left-block__skeleton-small-margin">
         <skeleton-component height="large"/>
       </div>
@@ -44,7 +64,7 @@ import SkeletonComponent from "../../../../shared/ui/SkeletonComponent/SkeletonC
   }
 
   &__image {
-    background: url("public/images/background.png") center center;
+    background: url("/images/background.png") center center;
     background-size: cover;
     width: 100%;
     height: 100%;
@@ -54,20 +74,19 @@ import SkeletonComponent from "../../../../shared/ui/SkeletonComponent/SkeletonC
 
   &__skeleton-wrapper {
     width: 190px;
-    gap: var(--margin-24);
+    gap: 12px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
   }
 
   &__skeleton-small-margin {
-    margin: 8px 0;
+    margin: 5px 0;
     width: 50%;
   }
 
   &__skeleton-large-margin {
-    margin: 12px 0;
+    margin: 5px 0;
     width: 100%;
   }
 
