@@ -19,10 +19,9 @@ const props = withDefaults(defineProps<SkeletonProps>(),{
 <style scoped lang="scss">
 .skeleton {
   border-radius: 12px;
-  background-image: linear-gradient(90deg, #3C3C3C 2%, #444 18%, #3C3C3C 33%);
-  background-size: 50%;
   width: 100%;
-  animation: shine-skeleton 3s infinite linear;
+  position: relative;
+  background: linear-gradient(90deg, #3C3C3C 2%, #444 18%, #3C3C3C 33%);
 
   &__height {
     &-small {
@@ -42,15 +41,5 @@ const props = withDefaults(defineProps<SkeletonProps>(),{
     }
   }
 
-}
-
-@keyframes shine-skeleton {
-  0% {
-    background-position: -100% 0;
-  }
-
-  40%, 100% {
-    background-position: 100% 0;
-  }
 }
 </style>
