@@ -17,7 +17,8 @@
     <panel-component
         v-if="isShowPanel.value"
         :row="row"
-        @on-close="isShowPanel.value = false"
+        @close="isShowPanel.value = false"
+        @delete="changeRowValue"
     />
   </div>
 </template>
@@ -28,6 +29,7 @@ import { VueDraggableNext as draggable } from 'vue-draggable-next';
 import {reactive} from "vue";
 import PanelComponent from "../../../../shared/ui/modals/InfoModal/InfoModal.vue";
 import {BooleanType, RowType} from "../../../../types/types.ts";
+import {useStorage} from "@vueuse/core"
 
 let row: RowType = { id: 0, value: 0, imageUrl: ""};
 let isShowPanel: BooleanType = reactive({value: false})
@@ -35,8 +37,7 @@ function showPanel(currentRow: RowType): void {
   row = currentRow;
   isShowPanel.value = !isShowPanel.value;
 }
-
-const rows: RowType[] = reactive([
+let rows = useStorage("rows",[
   {id: 1, value: 4, imageUrl: "green.svg"},
   {id: 2, value: 4, imageUrl: "orange.svg"},
   {id: 3, value: 1, imageUrl: "blue.svg"},
@@ -64,6 +65,16 @@ const rows: RowType[] = reactive([
   {id: 25, value: 0, imageUrl: ""},
 ]);
 
+function changeRowValue(element: RowType, deleteCount: number) {
+  rows.value.map((row) => {
+    if (row.id === element.id) {
+      if (row.value - deleteCount >= 0) {
+        row.value -= deleteCount
+      }
+    }
+  })
+  isShowPanel.value = false;
+}
 </script>
 
 <style scoped lang="scss">

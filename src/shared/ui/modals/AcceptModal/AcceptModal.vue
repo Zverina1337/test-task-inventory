@@ -2,16 +2,15 @@
   <div class="accept-modal">
     <div class="accept-modal__input-wrapper">
       <InputComponent
-          :value="inputValue"
           placeholder="Введите количество"
           name="input-counter"
-          @on-input="show"
+          @input="show"
       />
     </div>
     <div class="accept-modal__buttons-block">
       <button-component
           size="small"
-          @click=""
+          @click="emit('close')"
       >
         Отмена
       </button-component>
@@ -19,7 +18,7 @@
           size="medium"
           background-color="red"
           text-color="white"
-          @click=""
+          @click="emit('accept', inputValue.value)"
       >
         Подтвердить
       </button-component>
@@ -30,12 +29,18 @@
 <script setup lang="ts">
 import ButtonComponent from "../../buttons/ButtonComponent/ButtonComponent.vue";
 import InputComponent from "../../InputComponent/InputComponent.vue";
+import {reactive} from "vue";
 
-let inputValue = "";
+let inputValue: { value: number } = reactive({value: 0});
 // @ts-ignore
 function show(value){
-  console.log(value)
+  inputValue.value = Number(value)
 }
+
+const emit = defineEmits<{
+  (e: "close"): void,
+  (e: "accept", value: number): void
+}>()
 </script>
 
 <style scoped lang="scss">

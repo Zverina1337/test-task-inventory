@@ -1,24 +1,27 @@
 <template>
   <input
       class="input-component"
-      :value="props.value"
+      v-model="inputValue.value"
       :placeholder="props.placeholder"
       :name="props.name"
-      @change="emits('on-input', props.value)"
+      @change="emit('input', inputValue.value)"
   />
 </template>
 
 <script setup lang="ts">
-import {InputType} from "../../../types/InputType.ts";
+import {InputType} from "../../../types/types.ts";
+import {reactive} from "vue";
+
 
 const props = withDefaults(defineProps<InputType>(),{
-  value: "",
   placeholder: "Введите...",
   name: "input",
 })
 
-const emits = defineEmits<{
-  (e: "on-input", value: string): void
+let inputValue = reactive({ value: "" })
+
+const emit = defineEmits<{
+  (e: "input", value: string): void
 }>()
 
 </script>

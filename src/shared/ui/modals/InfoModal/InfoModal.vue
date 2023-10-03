@@ -6,7 +6,7 @@
       <div class="info-modal">
         <close-icon
             class="info-modal__close-icon"
-            @click="emit('on-close')"
+            @click="emit('close')"
         />
         <img
             :src="`/images/${row.imageUrl}`"
@@ -31,7 +31,11 @@
           Удалить предмет
         </button-component>
         <div class="info-modal__accept-modal-wrapper">
-          <accept-modal v-if="isShowAcceptModal" />
+          <accept-modal
+              v-if="isShowAcceptModal"
+              @close="isShowAcceptModal = !isShowAcceptModal"
+              @accept="acceptDelete"
+          />
         </div>
       </div>
     </transition>
@@ -39,15 +43,15 @@
 </template>
 
 <script setup lang="ts">
-import {reactive} from "vue";
+import {Ref, ref} from "vue";
 
 import CloseIcon from "../../../icons/CloseIcon.vue";
 import SkeletonComponent from "../../SkeletonComponent/SkeletonComponent.vue";
 import ButtonComponent from "../../buttons/ButtonComponent/ButtonComponent.vue";
 import AcceptModal from "../AcceptModal/AcceptModal.vue";
-import {BooleanType, PanelType} from "../../../../types/types.ts";
+import {PanelType, RowType} from "../../../../types/types.ts";
 
-let isShowAcceptModal: BooleanType = reactive({value: false});
+let isShowAcceptModal: Ref<boolean> = ref(false);
 
 function showAcceptModal() {
     isShowAcceptModal.value = !isShowAcceptModal.value
@@ -58,9 +62,17 @@ const {
 } = defineProps<PanelType>()
 
 const emit = defineEmits<{
-  (e: "on-close"): void
+  (e: "close"): void
+  (e: "delete", element: RowType, deleteCount: number): void
 }>()
 
+function acceptDelete(number: number) {
+  emit("delete", row, number)
+}
+
+defineExpose({
+  isShowAcceptModal
+})
 </script>
 
 <style scoped lang="scss">

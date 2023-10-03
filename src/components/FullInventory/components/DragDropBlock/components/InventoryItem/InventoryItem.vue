@@ -3,6 +3,7 @@
     <img
       :src="`/images/${props.imageUrl}`"
       :alt="props.imageUrl"
+      v-if="props.value !== 0"
     >
     <div
         class="inventory-item__counter"

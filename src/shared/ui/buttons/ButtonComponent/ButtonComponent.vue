@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { ButtonComponentType } from "../../../../types/ButtonComponentType.ts";
+import { ButtonComponentType } from "../../../../types/types.ts";
 
 const props = withDefaults(defineProps<ButtonComponentType>(), {
   size: "small",

@@ -1,5 +1,4 @@
 export interface InputType {
-    value: string;
     name: string;
     placeholder: string;
 }
